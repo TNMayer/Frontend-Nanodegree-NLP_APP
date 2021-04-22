@@ -24,7 +24,6 @@ if(submitButton) {
 
 function performSubmitAction(event) {
     event.preventDefault();
-    // getEndpointData('/getAccessKey');
     let inputField = document.getElementById("sentimentSentence");
     inputField = inputField.value;
     
