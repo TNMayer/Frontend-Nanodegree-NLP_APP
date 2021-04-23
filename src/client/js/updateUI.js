@@ -1,4 +1,6 @@
-exports.updateUI = function (data) {
+const {sum} = require('./apiHandling.js');
+
+const updateUI = function (data) {
     const sentenceBox = document.getElementById("sentenceOutput");
     sentenceBox.innerHTML = data.inputSentence;
     const agreementBox = document.getElementById("sentenceAgreement");
@@ -9,9 +11,18 @@ exports.updateUI = function (data) {
     confidenceBox.innerHTML = data.confidence;
     const ironyBox = document.getElementById("sentenceIrony");
     ironyBox.innerHTML = data.irony;
+    const multiBox = document.getElementById("testMultiplication");
+    multiBox.innerHTML = multiplication(7, 8);
+    const sumBox = document.getElementById("testSummation");
+    sumBox.innerHTML = sum(7, 8);
 }
 
 //testfunction
-exports.multiplication = function (a, b) {
+const multiplication = function (a, b) {
     return a * b;
 }
+
+module.exports = {
+    updateUI,
+    multiplication
+};

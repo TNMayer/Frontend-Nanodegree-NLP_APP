@@ -9,10 +9,8 @@ import './styles/header.scss';
 // images
 import previewLogo from './images/preview_logo.svg';
 // import from js modules
-const updateUiModule = require('./js/updateUI.js');
-const updateUI = updateUiModule.updateUI;
-const apiHandlingModule = require('./js/apiHandling');
-const postData = apiHandlingModule.postData;
+const {updateUI} = require('./js/updateUI.js');
+const {postData} = require('./js/apiHandling.js');
 
 //include images
 let headerLogo = document.getElementById('previewLogo');

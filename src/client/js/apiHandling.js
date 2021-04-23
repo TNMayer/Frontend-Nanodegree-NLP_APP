@@ -1,7 +1,7 @@
 require("regenerator-runtime/runtime");
 
 // post
-exports.postData = async (url = "", data = {}) => {
+const postData = async (url = "", data = {}) => {
     // console.log(data);
     const response = await fetch(url, {
         method: 'POST', // GET, POST, PUT, DELETE, etc.
@@ -21,6 +21,11 @@ exports.postData = async (url = "", data = {}) => {
 };
 
 //testfunction
-exports.sum = function (a, b) {
+const sum = function (a, b) {
     return a + b;
 }
+
+module.exports = {
+    postData,
+    sum
+};

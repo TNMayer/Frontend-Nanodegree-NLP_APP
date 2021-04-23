@@ -1,5 +1,4 @@
-const apiHandlingModule = require('./apiHandling');
-const sum = apiHandlingModule.sum;
+const {sum} = require('./apiHandling.js');
 
 test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
