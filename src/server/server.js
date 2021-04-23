@@ -1,5 +1,3 @@
-const apiData = require("./apiData");
-
 let postData = [];
 
 var path = require('path');
@@ -8,7 +6,7 @@ const mockAPIResponse = require('./mockAPI.js');
 const fetch = require('node-fetch');
 const port = 8080;
 
-const app = express()
+const app = express();
 
 /* Dependencies */
 const bodyParser = require('body-parser')
@@ -40,7 +38,7 @@ app.get('/test', function (req, res) {
 // POST Routes
 const getSentimentApiData = async (inputData) => {
 
-    let key = apiData.apiKey();
+    let key = "8fea75fbf1a4e6d2bb0404e8c79843b0";
     let format = 'txt';
     const fetchUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${key}&${format}=${inputData}&model=general&lang=en`
     console.log(fetchUrl);
