@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -29,10 +30,47 @@ module.exports = {
     },
     devServer: {
         setup: function (app, server) {
-            app.get('/getAccessKey', function (req, res) {
-                res.json({ 'key': "8fea75fbf1a4e6d2bb0404e8c79843b0" });
+            const fetch = require('node-fetch');
+            
+            var bodyParser = require('body-parser');    
+            app.use(bodyParser.json());
+
+            const getSentimentApiData = async (inputData) => {
+
+                let key = "8fea75fbf1a4e6d2bb0404e8c79843b0";
+                let format = 'txt';
+                const fetchUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${key}&${format}=${inputData}&model=general&lang=en`
+                console.log(fetchUrl);
+                const sentimentResult = await fetch(fetchUrl);
+            
+                try {
+                    const sentimentData = await sentimentResult.json();
+                    return sentimentData;
+                } catch(error) {
+                    console.log("Sentiment GET Error: ", error);
+                }
+            
+            };
+
+            app.post('/sentimentAPI', function(request, response) {
+                let input = request.body.content;
+            
+                getSentimentApiData(input)
+                    .then(function(data) {
+                        let dataSubset = {
+                            agreement: data.agreement,
+                            subjectivity: data.subjectivity,
+                            confidence: data.confidence,
+                            irony: data.irony,
+                            inputSentence: input
+                        }
+                        console.log(dataSubset);
+                        response.send(dataSubset);
+                    })
             });
         },
+        compress: true,
+        port: 4000,
     },
     target: ['web', 'es5'],
     module: {
@@ -80,7 +118,8 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        // new WorkboxPlugin.GenerateSW()
     ],
     performance: {
         hints: false,

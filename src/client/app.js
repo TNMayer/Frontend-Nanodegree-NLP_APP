@@ -9,7 +9,7 @@ import './styles/header.scss';
 // images
 import previewLogo from './images/preview_logo.svg';
 // import from js modules
-const {updateUI, validSentence} = require('./js/updateUI.js');
+const {updateUI, updateUI_error, validSentence} = require('./js/updateUI.js');
 const {postData} = require('./js/apiHandling.js');
 
 //include images
@@ -30,6 +30,7 @@ function performSubmitAction(event) {
     if (!validSentence(inputField)) {
         console.log(inputField);
         console.log("Please enter a sentence");
+        updateUI_error();
     } else {
         postData('/sentimentAPI', {content: inputField})
             .then(function(data) {
