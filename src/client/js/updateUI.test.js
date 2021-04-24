@@ -1,5 +1,9 @@
-const {multiplication} = require('./updateUI.js');
+const {validSentence} = require('./updateUI.js');
 
-test('multiplies 1 * 2 to equal 2', () => {
-    expect(multiplication(1, 2)).toBe(2);
+test('Check Sentence "" => false', () => {
+    expect(validSentence("")).toBe(false);
 });
+
+test('Check Sentence "The trowsers are very good" => true', () => {
+    expect(validSentence("The trowsers are very good")).toBe(true)
+})

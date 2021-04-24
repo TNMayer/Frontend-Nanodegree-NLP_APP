@@ -11,10 +11,6 @@ const updateUI = function (data) {
     confidenceBox.innerHTML = data.confidence;
     const ironyBox = document.getElementById("sentenceIrony");
     ironyBox.innerHTML = data.irony;
-    const multiBox = document.getElementById("testMultiplication");
-    multiBox.innerHTML = multiplication(7, 8);
-    const sumBox = document.getElementById("testSummation");
-    sumBox.innerHTML = sum(7, 8);
 }
 
 //testfunction
@@ -22,7 +18,17 @@ const multiplication = function (a, b) {
     return a * b;
 }
 
+const validSentence = function (sentence)
+{
+    if (sentence.length == 0) {
+        return false
+    } else {
+        return true
+    }
+} 
+
 module.exports = {
     updateUI,
-    multiplication
+    multiplication,
+    validSentence
 };
