@@ -38,7 +38,7 @@ app.get('/test', function (req, res) {
 // POST Routes
 const getSentimentApiData = async (inputData) => {
 
-    let key = "8fea75fbf1a4e6d2bb0404e8c79843b0";
+    let key = "8fea75fbf1a4e6d2bb0404e8...";
     let format = 'txt';
     const fetchUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${key}&${format}=${inputData}&model=general&lang=en`
     console.log(fetchUrl);
