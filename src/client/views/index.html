@@ -55,8 +55,8 @@
             <p>This is a footer</p>
         </footer>
 
-        <!-- script block is commented out because of IE11 interoperability -->
-        <!-- <script>
+        <!-- comment out script-block if IE11 compatibilty is required -->
+        <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
                 // Use the window load event to keep the page load performant
@@ -64,7 +64,7 @@
                     navigator.serviceWorker.register('/service-worker.js');
                 });
             }
-        </script> -->
+        </script>
 
     </body>
 </html>
