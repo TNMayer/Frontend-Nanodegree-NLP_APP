@@ -4,7 +4,7 @@ var path = require('path');
 const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
 const fetch = require('node-fetch');
-const port = 8080;
+const port = 4000;
 
 const app = express();
 
